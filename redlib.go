@@ -1,8 +1,8 @@
 package redlib
 
 import (
-	"bufio"
 	//"fmt"
+	"bufio"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -10,14 +10,14 @@ import (
 	"errors"
 )
 
-func Readln() (string, error) {
+func Readln() string {
 	reader := bufio.NewReader(os.Stdin)
 	input, err := reader.ReadString('\n')
 	if err != nil {
-		return "", errors.New(err.Error())
+		return ""
 	}
 	input = strings.Replace(input, "\n", "", -1)
-	return input, nil
+	return input
 }
 
 func Get(url string) (string, error) {
