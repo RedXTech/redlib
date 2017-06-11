@@ -1,7 +1,6 @@
 package redlib
 
 import (
-	//"fmt"
 	"bufio"
 	"io/ioutil"
 	"net/http"
@@ -12,10 +11,7 @@ import (
 
 func Readln() string {
 	reader := bufio.NewReader(os.Stdin)
-	input, err := reader.ReadString('\n')
-	if err != nil {
-		return ""
-	}
+	input, _ := reader.ReadString('\n')
 	input = strings.Replace(input, "\n", "", -1)
 	return input
 }
