@@ -10,6 +10,7 @@ import (
 	"net/url"
 	"bytes"
 	"unsafe"
+	"log"
 )
 
 func Readln() string {
@@ -57,4 +58,13 @@ func Post(postUrl string, data map[string]string) string {
 	b := buf.Bytes()
 	s := *(*string)(unsafe.Pointer(&b))
 	return s
+}
+
+func HandleErr(err error) bool {
+	if err != nil {
+		log.Fatal(err)
+		return false
+	} else {
+		return true
+	}
 }
