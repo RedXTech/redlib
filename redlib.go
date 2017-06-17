@@ -60,15 +60,17 @@ func Post(postUrl string, data map[string]string) string {
 	return s
 }
 
-func Exists(path string) (bool, error) {
+func Exists(path string) bool {
 	_, err := os.Stat(path)
 	if err == nil {
-		return true, nil
+		return true
 	}
 	if os.IsNotExist(err) {
-		return false, nil
+		return false
+	} else {
+		HandleErr(err)
 	}
-	return true, err
+	return true
 }
 
 func StringInSlice(a string, list []string) bool {
